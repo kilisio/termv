@@ -192,12 +192,12 @@ _play() {
         xdo hide
         # shellcheck disable=SC2086
         # mpv "${*##* }" ${TERMV_MPV_FLAGS} --force-media-title="${*%%  *}" --force-window=immediate
-        streamlink "${*##* }" "540p,640p,480p,720p,best" --mux-subtitles -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'  --force-window=immediate" --hls-audio-select "*"
+        streamlink "${*##* }" "540p,640p,480p,720p,best" --mux-subtitles -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'  --force-window=immediate" --hls-audio-select "*" --stream-segment-threads 4
         xdo show "$WID" && xdo activate "$WID"
     else
         # shellcheck disable=SC2086
         # mpv "${*##* }" ${TERMV_MPV_FLAGS} --force-media-title="${*%%  *}"
-        streamlink "${*##* }" "540p,640p,480p,720p,best" --mux-subtitles -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'" --hls-audio-select "*"
+        streamlink "${*##* }" "540p,640p,480p,720p,best" --mux-subtitles -p mpv -a "${TERMV_MPV_FLAGS} --force-media-title='${*%%  *}'" --hls-audio-select "*" --stream-segment-threads 4
     fi
 }
 
